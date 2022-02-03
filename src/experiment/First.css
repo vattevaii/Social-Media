@@ -1,0 +1,14 @@
+.share2 {
+   /* position: fixed; */
+   /* transform: translate(200px, 200px); */
+}
+.share2 svg {
+   height: 2em;
+   width: 2em;
+   margin: 1em;
+}
+.griddpdn {
+   display: flex;
+   justify-content: space-between;
+   /* transform: translateY(150px); */
+}

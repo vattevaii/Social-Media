@@ -1,0 +1,30 @@
+.personlogo {
+   display: flex;
+   align-items: center;
+   padding: 1em;
+   border-radius: 1em;
+}
+.nostretch {
+   flex-direction: column;
+}
+.roundImg {
+   width: 5ch;
+   height: 5ch;
+   border-radius: 50%;
+   border: 1px solid brown;
+   display: grid;
+   place-items: center;
+   overflow: hidden;
+}
+.notice {
+   position: absolute;
+   border-radius: 50%;
+   right: 0;
+   background-color: red;
+   color: ivory;
+   width: 2.5ch;
+   height: 2.5ch;
+   display: grid;
+   place-items: center;
+   font-size: 1em;
+}

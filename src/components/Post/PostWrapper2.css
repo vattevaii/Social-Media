@@ -1,0 +1,7 @@
+.navigate-back {
+   padding: 1em;
+   height: 3.2em;
+   position: fixed;
+   top: 0;
+   z-index: 20;
+}

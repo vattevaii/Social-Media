@@ -1,0 +1,4 @@
+.people {
+   display: flex;
+   gap: 20px;
+}

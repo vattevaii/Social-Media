@@ -1,0 +1,52 @@
+.loader-wrapper {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.5em;
+   color: white;
+}
+.loader {
+   height: 10%;
+   width: 10%;
+   /* padding: 1em; */
+   margin: 0 auto;
+   animation: rotateLoader 1s linear infinite;
+}
+.error {
+   color: brown;
+}
+.error .loader {
+   animation: none;
+}
+.loader > svg {
+   fill: black;
+   stroke: black;
+}
+.error .loader > svg {
+   fill: brown;
+   stroke: brown;
+}
+@keyframes rotateLoader {
+   0% {
+      transform: rotate(0deg);
+   }
+   25% {
+      transform: rotate(30deg);
+   }
+   50% {
+      transform: rotate(100deg);
+   }
+   75% {
+      transform: rotate(250deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+.loader > svg {
+   height: 100%;
+   width: 100%;
+}

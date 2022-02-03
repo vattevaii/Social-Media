@@ -1,0 +1,32 @@
+.like {
+   border: black 2px solid;
+   border-radius: 10vh;
+   display: flex;
+   align-items: center;
+   padding: 5px;
+   color: black;
+   max-height: max-content;
+   opacity: 0.7;
+}
+.like:hover,
+.like:focus {
+   opacity: 0.9;
+}
+.like.true {
+   border: red 3px solid;
+   background-color: red;
+   color: white;
+}
+.like svg {
+   fill: brown;
+   padding: 0.3em 0.3em 0.3em 0;
+   height: inherit;
+}
+.like.true svg {
+   fill: white;
+}
+.like .text {
+   /* padding: inherit; */
+   height: inherit;
+   margin: auto 0;
+}

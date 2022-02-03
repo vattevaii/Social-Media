@@ -3,10 +3,34 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AuthContextProvider } from "./context/auth.context";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+import { CookiesProvider } from 'react-cookie'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      // refetchOnmount: false,
+      refetchOnReconnect: false,
+      retry: false,
+      staleTime: 5 * 60 * 1000,
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CookiesProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </QueryClientProvider>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
