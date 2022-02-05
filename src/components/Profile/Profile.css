@@ -1,0 +1,33 @@
+.profile {
+   --nav-height: 4rem;
+   height: var(--nav-height);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: sticky;
+   top: 0;
+   padding: 0;
+}
+.profile.expand {
+   justify-content: space-between;
+}
+.profile > .main {
+   height: 100%;
+   font-size: 1.8rem;
+}
+.profile span {
+   line-height: var(--nav-height);
+}
+.profile > .sub {
+   display: none;
+   height: 100%;
+}
+.profile.expand > .sub {
+   display: flex;
+}
+@media screen and (min-width: 600px) {
+   .profile {
+      --padding: calc(40vw - 300px);
+      padding: 0 var(--padding) 0 var(--padding);
+   }
+}

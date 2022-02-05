@@ -4,8 +4,8 @@ const AuthReducer = (state, action) => {
          return {
             ...state,
             user: null,
-            accessToken: "",
-            refreshToken: "",
+            accessToken: null,
+            refreshToken: null,
          };
 
       case "LOGIN_SUCCESS":
@@ -34,8 +34,8 @@ const AuthReducer = (state, action) => {
          return {
             ...state,
             user: null,
-            accessToken: "",
-            refreshToken: "",
+            accessToken: null,
+            refreshToken: null,
             isFetching: false,
          };
       }
@@ -49,8 +49,8 @@ const AuthReducer = (state, action) => {
 
       case "REFRESH_FAILURE":
          return {
-            accessToken: "",
-            refreshToken: "",
+            accessToken: null,
+            refreshToken: null,
             user: null,
             isFetching: false,
             error: [...state.error, action.payload],

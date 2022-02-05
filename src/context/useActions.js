@@ -30,7 +30,7 @@ function useActions(context) {
    };
    const loginSuccess = (res) => {
       console.log("hey there.. are you seeing the message");
-      try { setMessage(res); }
+      try { setMessage(res, "Login Successful", "Logged In Successfully"); }
       catch (e) { console.log("error in Set Message") }
       setCookie("jwt", res.data.accessToken, { path: '/', maxAge: 26000, sameSite: 'None', secure: true });
       setCookie("refresh", res.data.refreshToken, { path: '/', maxAge: 2600000, sameSite: 'None', secure: true });
@@ -39,7 +39,7 @@ function useActions(context) {
       navigate("/");
    }
    const logoutSuccess = (res) => {
-      setMessage(res);
+      setMessage(res, "Logout Successful", "You have been logged out successfully");
       removeCookie("jwt", { path: "/" });
       removeCookie("refresh", { path: "/" });
       removeCookie("user", { path: "/" });

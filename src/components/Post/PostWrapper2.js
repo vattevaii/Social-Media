@@ -7,8 +7,9 @@ import { Logo as Person } from '../Person/PersonMini';
 import './PostWrapper2.css'
 import Loader from "@experiment/LoadError/Loader";
 import Error from "@experiment/LoadError/Error";
+import { useQuery } from "react-query";
 // import { AuthContext } from "@context/auth.context";
-
+import apiClient from "../../http-common";
 
 function PostWrapper() {
    const { username } = useParams();
@@ -20,6 +21,7 @@ function PostWrapper() {
    const [addingMoreData, setAdding] = useState(false)
    const [addDataError, setAddingError] = useState(false);
    const [dataAdded, dataChanged] = useState(false);
+
    const addMoreData = () => {
       // load more posts
       setAdding(true);

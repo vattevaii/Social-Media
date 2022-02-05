@@ -8,12 +8,12 @@ const Toast = ({ context, title, message, type, persist, index }) => {
    const closeToast = () => dispatch({ type: "REMOVE_ERROR", payload: id });
 
    useEffect(() => {
-      console.log(Date.now());
+      // console.log(Date.now());
       if (!!persist) return;
-      console.log(Date.now());
+      // console.log(Date.now());
       setTimeout(() => {
          dispatch({ type: "REMOVE_ERROR", payload: id });
-         console.log(Date.now());
+         // console.log(Date.now());
       }, 5000);
    }, [type, dispatch, id, persist])
    useEffect(() => {
@@ -32,9 +32,9 @@ function MessageToast({ context }) {
    // const [errorlength, setErrorLength] = useState(0);
    useEffect(() => {
       // console.log(error)
-      if (error.length > 0) {
-         console.log(error);
-      }
+      // if (error.length > 0) {
+      //    console.log(error);
+      // }
    }, [error.length, error])
    if (!!error.length)
       return (<div className="toastHolder">

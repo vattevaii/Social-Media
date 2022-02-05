@@ -4,8 +4,8 @@ import AuthReducer from "./auth.reducer";
 const INITIAL_STATE = {
    user: null,
    error: [],
-   refreshToken: "",
-   accessToken: "",
+   refreshToken: null,
+   accessToken: null,
 };
 
 export const AuthContext = createContext();

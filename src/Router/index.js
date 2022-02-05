@@ -12,6 +12,7 @@ import { AuthContext } from "../context/auth.context";
 import Login from "../components/Login";
 import Logout from "../components/Login/LogOut";
 import Error from "../experiment/LoadError/Error";
+import Profile from "../components/Profile";
 
 function RouteingLogic() {
    const { user } = useContext(AuthContext);
@@ -23,12 +24,14 @@ function RouteingLogic() {
                {/* <Route path={path} element={element} key={index} /> */}
                <Route path="/" element={<Navigate to="/post" />} />
                <Route path="login" element={<Navigate to="/auth/login" />} />
+               <Route path="logout" element={<Navigate to="/auth/logout" />} />
                <Route path="/auth" element={<PreventedRoute />}>
                   <Route path="exp" element={<Experiment />} />
                   <Route path="def" element={<Default />} />
                   <Route path="login" element={<Login />} />
                </Route>
                <Route element={<ProtectedRoute />}>
+                  <Route path="profile" element={<Profile />} />
                   <Route path="def" element={<Default />} />
                   <Route path="post" element={<Outlet />}>
                      <Route path="" element={<PostWrapper />} />

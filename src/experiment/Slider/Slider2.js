@@ -31,7 +31,6 @@ function Slider({ children, initPos, changePos, nobutton }) {
    // Every element inside must have their own scrollSnapAlign property
    // const [initPos, changePos] = useState(1);
    const swipe = (ref, final) => {
-      // console.log("here i am!!");
       const childWidth = ref.children[0].offsetWidth;
       // const present = ref.scrollLeft;
       const padding = parseInt(ref.style.paddingLeft, 10)
@@ -56,15 +55,15 @@ function Slider({ children, initPos, changePos, nobutton }) {
       slideItems.current.style.padding = padding
       slideItems.current.style.scrollPaddingLeft = `${pad}px`
       slideItems.current.style.scrollPaddingRight = `${pad}px`
-      console.log(padding)
+      // console.log(padding)
    }, 1000);
    const tryGoingLeft = () => {
-      console.log("I went Left" + initPos);
+      // console.log("I went Left" + initPos);
       // if (initPos <= 1) return;
       changePos((initPos) => --initPos)
    };
    const tryGoingRight = () => {
-      console.log("I went Right " + initPos);
+      // console.log("I went Right " + initPos);
       // if (initPos >= slideItems.current.children.length) return;
       changePos((initPos) => ++initPos)
    }
@@ -75,7 +74,7 @@ function Slider({ children, initPos, changePos, nobutton }) {
       if (initPos < 1) changePos(1);
       if (initPos > slideItems.current.children.length + 1) changePos(slideItems.current.children.length + 1)
       swipe(slideItems.current, initPos);
-      if (nobutton) return;
+      // if (nobutton) return;
    }, [initPos, nobutton])
    useEffect(() => {
       handleResize();
