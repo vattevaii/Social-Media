@@ -20,7 +20,7 @@ function RouteingLogic() {
    return (
       <Router>
          <Suspense fallback={<div style={{ marginInset: "auto" }}>Loading...</div>}>
-            <Routes>
+            <Routes basename="/Social-Media">
                {/* <Route path={path} element={element} key={index} /> */}
                <Route path="/" element={<Navigate to="/post" />} />
                <Route path="login" element={<Navigate to="/auth/login" />} />
