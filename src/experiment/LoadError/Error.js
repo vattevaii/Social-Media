@@ -1,4 +1,4 @@
-import { ReactComponent as ErrorLogo } from '@assets/logos/danger.svg'
+import { ReactComponent as ErrorLogo } from '../../assets/logos/danger.svg'
 import './Loader.css'
 function Error({ children }) {
    return (<div className='loader-wrapper error'>

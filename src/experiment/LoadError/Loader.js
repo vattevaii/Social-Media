@@ -1,4 +1,4 @@
-import { ReactComponent as LoadLogo } from '@assets/logos/loader.svg'
+import { ReactComponent as LoadLogo } from '../../assets/logos/loader.svg'
 import { useRef } from 'react';
 import './Loader.css'
 function Loader({ children, white }) {
