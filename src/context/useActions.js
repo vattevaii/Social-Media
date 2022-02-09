@@ -44,6 +44,7 @@ function useActions(context) {
       setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, sameSite: 'None', secure: true });
       setCookie("user", res.data.user, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      console.log(process.env.REACT_APP_DOMAIN);
       navigate("/");
    }
    const logoutSuccess = (res) => {
