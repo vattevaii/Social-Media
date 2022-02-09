@@ -1,4 +1,4 @@
-import Slider from "./Slider/Slider2";
+import Slider from "./Slider/Slider3";
 import Dropdown from './StaticDropdown/DropDown'
 import { ReactComponent as ShareLogo } from '@assets/logos/share.svg'
 import { ReactComponent as FbLogo } from '@assets/logos/facebook.svg'
@@ -32,6 +32,15 @@ function Experiment() {
          <DpDn /><DpDn /><DpDn /><DpDn />
       </div>
       <LikeButton height="3em" width={"max-content"} like={like} likeMe={() => changeLikeStatus(!like)} />
+      <Slider>
+         <Slider.Item></Slider.Item>
+         <Slider.Item></Slider.Item>
+         <Slider.Item></Slider.Item>
+         <Slider.Item></Slider.Item>
+         <Slider.Item></Slider.Item>
+         <Slider.Item></Slider.Item>
+         <Slider.Item></Slider.Item>
+      </Slider>
    </>);
 }
 

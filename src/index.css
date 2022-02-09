@@ -195,11 +195,6 @@ form.normform select:focus {
   border-color: var(--nf-main-color);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
-form.normform input:invalid:not(:focus):not(:placeholder-shown),
-form.normform input:invalid:focus:not(:placeholder-shown) {
-  background: var(--nf-error-bg-color);
-  border-color: var(--nf-error-border-color);
-}
 form.normform input:invalid:focus:not(:placeholder-shown) ~ .requirements {
   max-height: 150px;
   padding: 0 0 10px 10px;
@@ -271,6 +266,13 @@ form.normform input[type="radio"] + label:before {
   top: calc(50% - 5px);
   width: 9px;
 }
+form.normform input:invalid:not(:focus):not(:placeholder-shown),
+form.normform input:invalid:focus:not(:placeholder-shown),
+form.normform input + label.error {
+  background: var(--nf-error-bg-color);
+  border-color: var(--nf-error-border-color);
+}
+
 form.normform input[type="radio"] + label:before {
   border-radius: 100px;
 }

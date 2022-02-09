@@ -13,6 +13,7 @@ import Login from "../components/Login";
 import Logout from "../components/Login/LogOut";
 import Error from "../experiment/LoadError/Error";
 import Profile from "../components/Profile";
+import Signup from "../components/Login/SignUp";
 
 function RouteingLogic() {
    const { user } = useContext(AuthContext);
@@ -25,10 +26,12 @@ function RouteingLogic() {
                <Route path="/" element={<Navigate to="/post" />} />
                <Route path="login" element={<Navigate to="/auth/login" />} />
                <Route path="logout" element={<Navigate to="/auth/logout" />} />
+               <Route path="signup" element={<Navigate to="/auth/signup" />} />
                <Route path="/auth" element={<PreventedRoute />}>
                   <Route path="exp" element={<Experiment />} />
                   <Route path="def" element={<Default />} />
                   <Route path="login" element={<Login />} />
+                  <Route path="signup" element={<Signup />} />
                </Route>
                <Route element={<ProtectedRoute />}>
                   <Route path="profile" element={<Profile />} />
