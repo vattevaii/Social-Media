@@ -20,6 +20,7 @@ function useActions(context) {
                })
          }
          catch (err) {
+            console.log(cookies)
             removeCookie("jwt", { path: "/" });
             removeCookie("refresh", { path: "/" });
             removeCookie("user", { path: "/" });
