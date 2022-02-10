@@ -7,9 +7,11 @@ import { Logo as Person } from '../Person/PersonMini';
 import './PostWrapper2.css'
 import Loader from "@experiment/LoadError/Loader";
 import Error from "@experiment/LoadError/Error";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 // import { AuthContext } from "@context/auth.context";
 import apiClient from "../../http-common";
+import useActions from "../../context/useActions";
+import { AuthContext } from "../../context/auth.context";
 
 function PostWrapper() {
    const { username } = useParams();
@@ -21,6 +23,13 @@ function PostWrapper() {
    const [addingMoreData, setAdding] = useState(false)
    const [addDataError, setAddingError] = useState(false);
    const [dataAdded, dataChanged] = useState(false);
+
+   const { foundError } = useActions(AuthContext);
+   const tryPosts = useMutation("tryPosts", () => {
+      apiClient.get("/posts/timeline", { params: { email: "pawan@gmail.com" } })
+         .then((data) => { console.log(data); })
+         .catch((err) => { foundError(err) });
+   });
 
    const addMoreData = () => {
       // load more posts
@@ -47,6 +56,7 @@ function PostWrapper() {
       threshold: 0.6
    });
    useEffect(() => {
+      tryPosts.mutate();
       console.log(username);
       addMoreData();
       setTimeout(() => {
