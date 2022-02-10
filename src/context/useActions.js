@@ -9,24 +9,22 @@ function useActions(context) {
    const [cookies, setCookie, removeCookie] = useCookies(['jwt', 'refresh', 'user']);
    const navigate = useNavigate();
    const foundError = (err) => {
-      setMessage(err.response);
       if (err.response.status === 401) {
-         // Unauthorized
-         try {
-            removeCookie("jwt", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-            apiClient.post("/auth/refresh", { token: cookies["refresh"] })
-               .then(res => {
-                  setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
-                  setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, sameSite: 'None', secure: true });
-                  dispatch({ type: "REFRESH_SUCCESS", payload: res.data });
-               })
-         }
-         catch (eror) {
-            removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-            removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-            dispatch({ type: "LOGOUT" });
-            navigate("/auth/logIn");
-         }
+         removeCookie("jwt", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+         apiClient.post("/auth/refresh", { token: cookies["refresh"] })
+            .then(res => {
+               setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
+               setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, sameSite: 'None', secure: true });
+               dispatch({ type: "REFRESH_SUCCESS", payload: res.data });
+               return;
+            }).catch(err => {
+               setMessage(err.response, "Refresh token error", "Login again");
+            })
+         setMessage(err.response);
+         removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+         removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+         dispatch({ type: "LOGOUT" });
+         navigate("/");
       }
    };
    const regSuccess = (res) => {
