@@ -10,8 +10,10 @@ function useActions(context) {
    const navigate = useNavigate();
    const foundError = (err) => {
       setMessage(err.response);
-      if (err.response.statusText === "Unauthorized") {
+      if (err.response.status === 401) {
+         // Unauthorized
          try {
+            removeCookie("jwt", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
             apiClient.post("/auth/refresh", { token: cookies["refresh"] })
                .then(res => {
                   setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
@@ -19,10 +21,9 @@ function useActions(context) {
                   dispatch({ type: "REFRESH_SUCCESS", payload: res.data });
                })
          }
-         catch (err) {
-            removeCookie("jwt", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-            removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+         catch (eror) {
             removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+            removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
             dispatch({ type: "LOGOUT" });
             navigate("/auth/logIn");
          }

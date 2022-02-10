@@ -20,7 +20,7 @@ function ProtectedRoute() {
       {
          onSuccess: (res) => logoutSuccess(res),
          onError: (err) => {
-            console.log(err.response.statusText);
+            console.log(err.response.status + " " + err.response.statusText);
             foundError(err);
          }
       }
