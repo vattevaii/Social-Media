@@ -1,8 +1,9 @@
-import Flickity from 'flickity';
+import Flickity from 'react-flickity-component';
+import "flickity/css/flickity.css";
 import { useEffect } from 'react';
 import "./Slider3.css"
 function Slider({ children }) {
-   const flick = new Flickity('.slider', {
+   const flickOpt = {
       cellAlign: 'left',
       contain: true,
       wrapAround: true,
@@ -10,13 +11,10 @@ function Slider({ children }) {
       prevNextButtons: true,
       pageDots: false,
       draggable: true,
-   });
-   useEffect(() => {
-
-   }, [])
-   return (<div className="slider">
+   };
+   return (<Flickity className="slider" options={flickOpt}>
       {children}
-   </div>);
+   </Flickity>);
 }
 Slider.Item = function (props) {
    const bg = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)];
