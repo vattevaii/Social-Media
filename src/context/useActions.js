@@ -9,18 +9,19 @@ function useActions(context) {
    const [cookies, setCookie, removeCookie] = useCookies(['jwt', 'refresh', 'user']);
    const navigate = useNavigate();
    const foundError = (err) => {
-      if (err.response.status === 401) {
-         removeCookie("jwt", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+      if (err.response.status === 401) { //Unauthorized
+         removeCookie("jwt", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN });
          apiClient.post("/auth/refresh", { token: cookies["refresh"] })
             .then(res => {
-               setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
-               setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, sameSite: 'None', secure: true });
+               setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, secure: true, sameSite: 'None' });
+               setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, secure: true, sameSite: 'None' });
                dispatch({ type: "REFRESH_SUCCESS", payload: res.data });
                return;
-            }).catch(err => {
-               setMessage(err.response, "Refresh token error", "Login again");
-               removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-               removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+            }).catch(error => {
+               setMessage(error.response, "Refresh token error", "Login again");
+               removeCookie("user", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN });
+               removeCookie("refresh", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN });
+               dispatch({ type: "LOGOUT" });
                navigate("/");
             })
          return;
@@ -39,18 +40,18 @@ function useActions(context) {
       console.log("hey there.. are you seeing the message");
       try { setMessage(res, "Login Successful", "Logged In Successfully"); }
       catch (e) { console.log("error in Set Message") }
-      setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
-      setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, sameSite: 'None', secure: true });
-      setCookie("user", res.data.user, { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, sameSite: 'None', secure: true });
+      setCookie("jwt", res.data.accessToken, { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, secure: true, sameSite: 'None' });
+      setCookie("refresh", res.data.refreshToken, { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN, maxAge: 2600000, secure: true, sameSite: 'None' });
+      setCookie("user", res.data.user, { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN, maxAge: 26000, secure: true, sameSite: 'None' });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       console.log(process.env.REACT_APP_DOMAIN);
       navigate("/");
    }
    const logoutSuccess = (res) => {
       setMessage(res, "Logout Successful", "You have been logged out successfully");
-      removeCookie("jwt", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-      removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-      removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+      removeCookie("jwt", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN });
+      removeCookie("refresh", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN });
+      removeCookie("user", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN });
       console.log("hey there.. are you seeing the message? I've cleared the cookies");
       dispatch({ type: "LOGOUT" });
       navigate("/auth/logIn");
