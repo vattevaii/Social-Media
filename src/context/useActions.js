@@ -25,7 +25,9 @@ function useActions(context) {
          removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
          dispatch({ type: "LOGOUT" });
          navigate("/");
+         return;
       }
+      setMessage(err.response);
    };
    const regSuccess = (res) => {
       // console.log("hey there.. are you seeing the message");
