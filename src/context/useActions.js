@@ -19,12 +19,10 @@ function useActions(context) {
                return;
             }).catch(err => {
                setMessage(err.response, "Refresh token error", "Login again");
+               removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+               removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
+               navigate("/");
             })
-         setMessage(err.response);
-         removeCookie("user", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-         removeCookie("refresh", { path: process.env.REACT_APP_PATH, domain: process.env.REACT_APP_DOMAIN });
-         dispatch({ type: "LOGOUT" });
-         navigate("/");
          return;
       }
       setMessage(err.response);
