@@ -35,7 +35,7 @@ const SliderItem = function ({ onclick, children }) {
    const bg = useMemo(() => [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]);
    // console.log(bg);
    return (<div onClick={onclick} className="slide--item" style={{
-      // backgroundColor: `rgb(${bg[0]},${bg[1]},${bg[2]})`,
+      backgroundColor: `rgb(${bg[0]},${bg[1]},${bg[2]})`,
       height: "fit-content",
       width: "fit-content",
    }}>{
