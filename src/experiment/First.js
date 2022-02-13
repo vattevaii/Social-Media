@@ -1,4 +1,4 @@
-import Slider, { SliderItem } from "./Slider/Slider3";
+import Slider, { SliderItem } from "./Slider/Slider4";
 import Dropdown from './StaticDropdown/DropDown'
 import { ReactComponent as ShareLogo } from '@assets/logos/share.svg'
 import { ReactComponent as FbLogo } from '@assets/logos/facebook.svg'

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import "./PostWrapper2.css";
 import apiClient from "../../http-common";
-import Slider, { SliderItem as SlideItem } from "../../experiment/Slider/Slider3";
+import Slider, { SliderItem as SlideItem } from "../../experiment/Slider/Slider4";
 import Error from "../../experiment/LoadError/Error";
 import Loader from "../../experiment/LoadError/Loader";
 import FullPage from "../../assets/DisplayFullPage";
@@ -50,10 +50,10 @@ function PostWrapper() {
       <a onClick={() => navigate(-1)} className="hover-white navigate-back">
          Go Back
       </a>
-      <Slider initPos={activePage} changePos={changePage}>
+      <Slider initPos={1} changePos={changePage}>
          {
             showPosts.map((d, index) => <SlideItem key={index}>
-               <Post id={d}></Post>
+               {< Post id={d}></Post>}
             </SlideItem>)
          }
          {//Add More data Code not written
@@ -62,15 +62,15 @@ function PostWrapper() {
             <Post.MoreData></Post.MoreData>
          </SlideItem>
       </Slider>
-      <Slider initPos={activePage} changePos={changePage} nobutton>
+      {/* <Slider initPos={activePage} changePos={changePage} nobutton small>
          {
             postIdsFromNet.map((id, index) => <SlideItem link
                key={index} onclick={() => changePage(id)}>
                <Person person={{ id: 1 }} className="hover-white" />
             </SlideItem>)
          }
-      </Slider>
-   </FullPage>);
+      </Slider> */}
+   </FullPage >);
 }
 
 export default PostWrapper;

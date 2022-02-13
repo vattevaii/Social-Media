@@ -37,7 +37,8 @@
    justify-content: center;
    align-items: center;
 }
-.is-selected > .post {
+.is-selected > .post,
+.selected .post {
    transform: scale(1);
    transition: all 0.5s;
 }
@@ -59,9 +60,6 @@
    position: relative;
    /* border-radius: inherit; */
    overflow: hidden;
-}
-.coverImg > img {
-   width: 100%;
 }
 .coverImg .like-btn {
    position: absolute;
@@ -140,12 +138,10 @@
       place-items: center;
       margin: 2em;
    }
-   .post:not(.active) .postOptions {
-      visibility: hidden;
-      opacity: 0;
-   }
-   .coverImg > img {
-      height: 100%;
+   .is-selected .post > .postOptions,
+   .selected .post > .postOptions {
+      visibility: visible;
+      opacity: 100;
    }
    .postOptions {
       z-index: 10;
