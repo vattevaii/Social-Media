@@ -1,0 +1,17 @@
+.slider {
+   --pad: 0px;
+   width: 100%;
+}
+.flickity-enabled {
+   width: 100%;
+}
+.flickity-viewport {
+   width: 100%;
+}
+.flickity-slider {
+   margin: 0 (--pad);
+}
+
+.slide--item {
+   transform: translateY(-50%);
+}

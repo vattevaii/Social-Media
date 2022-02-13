@@ -8,7 +8,7 @@ import Loader from '@experiment/LoadError/Loader'
 import Error from '@experiment/LoadError/Error'
 import LikeButton from '../Button/Like'
 import Dropdown from '@experiment/StaticDropdown/DropDown'
-function Post({ id, entryObserver, active }) {
+const Post = ({ id, entryObserver }) => {
    const postImg = "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg"
    const postName = `${id} Image tag`
    const postDetail = "This is a random image extracted from internet."
@@ -72,7 +72,7 @@ function Post({ id, entryObserver, active }) {
       </div>)
    else //Have Data for Post Start
       return (
-         <div className={`post ${!active ? '' : 'active'} glassModel`} ref={post}>
+         <div className={`post glassModel`} ref={post}>
             <div className="cover"><img src={postImg} /></div>
             <Dropdown className={'options'}>
                <Dropdown.Visible><Dots3 /></Dropdown.Visible>

@@ -4,7 +4,7 @@ import PreventedRoute from "./PreventedRoute";
 // [+] Pages
 import Default from '@components/Default';
 // import PostWrapper from './components/Post/PostWrapper';
-import PostWrapper from '../components/Post/PostWrapper2';
+import PostWrapper from '../components/Post/PostWrapper3';
 import Experiment from '../experiment/First'
 import { Route, BrowserRouter as Router, Routes, Navigate, Outlet } from "react-router-dom";
 import { Suspense, useContext } from "react";

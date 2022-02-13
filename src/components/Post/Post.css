@@ -5,6 +5,7 @@
    display: flex;
    flex-direction: column;
    /* margin: auto auto auto auto; */
+   transform: scale(0.55);
    transition: all ease-out 0.2s;
 }
 .post > .cover {
@@ -36,8 +37,8 @@
    justify-content: center;
    align-items: center;
 }
-.post:not(.active) {
-   transform: scale(0.75);
+.is-selected > .post {
+   transform: scale(1);
    transition: all 0.5s;
 }
 .postOptions {

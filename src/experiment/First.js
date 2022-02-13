@@ -1,4 +1,4 @@
-import Slider from "./Slider/Slider3";
+import Slider, { SliderItem } from "./Slider/Slider3";
 import Dropdown from './StaticDropdown/DropDown'
 import { ReactComponent as ShareLogo } from '@assets/logos/share.svg'
 import { ReactComponent as FbLogo } from '@assets/logos/facebook.svg'
@@ -23,6 +23,7 @@ const DpDn = () => (<Dropdown className={'share2'}>
    </Dropdown.Focus> */}
 </Dropdown>)
 function Experiment() {
+   const [selected, sslt] = useState(0);
    const [like, changeLikeStatus] = useState(false);
    return (<>
       <a className="hover-white">Stack</a>
@@ -32,15 +33,16 @@ function Experiment() {
          <DpDn /><DpDn /><DpDn /><DpDn />
       </div>
       <LikeButton height="3em" width={"max-content"} like={like} likeMe={() => changeLikeStatus(!like)} />
-      <Slider>
-         <Slider.Item></Slider.Item>
-         <Slider.Item></Slider.Item>
-         <Slider.Item></Slider.Item>
-         <Slider.Item></Slider.Item>
-         <Slider.Item></Slider.Item>
-         <Slider.Item></Slider.Item>
-         <Slider.Item></Slider.Item>
-      </Slider>
+      <Slider initPos={selected} changePos={sslt}>
+         <SliderItem></SliderItem>
+         <SliderItem></SliderItem>
+         <SliderItem></SliderItem>
+         <SliderItem></SliderItem>
+         <SliderItem></SliderItem>
+         <SliderItem></SliderItem>
+         <SliderItem></SliderItem>
+      </Slider><br /><br />
+      <button onClick={() => sslt(3)}>{selected}</button>
    </>);
 }
 
