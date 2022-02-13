@@ -34,13 +34,13 @@ function Experiment() {
       </div>
       <LikeButton height="3em" width={"max-content"} like={like} likeMe={() => changeLikeStatus(!like)} />
       <Slider initPos={selected} changePos={sslt}>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
-         <SliderItem><div style={{ height: 200px; width: 100vw }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
+         <SliderItem><div style={{ height: "200px", width: "100vw" }}></div></SliderItem>
       </Slider><br /><br />
       <button onClick={() => sslt(3)}>{selected}</button>
    </>);
