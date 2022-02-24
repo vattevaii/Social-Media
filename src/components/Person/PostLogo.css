@@ -1,6 +1,7 @@
 .personlogo {
    display: flex;
    align-items: center;
+   width: fit-content;
    padding: 1em;
    border-radius: 1em;
 }
@@ -14,6 +15,7 @@
    border: 1px solid brown;
    display: grid;
    place-items: center;
+   margin-right: 10px;
    overflow: hidden;
 }
 .notice {

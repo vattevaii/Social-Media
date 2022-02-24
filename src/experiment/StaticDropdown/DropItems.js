@@ -90,7 +90,7 @@ const DropItems = ({ children, className, top, bottom, left, right, start, end, 
          refere.parentElement.removeEventListener('mouseleave', stopObserving);
       };
    })
-   return (<div ref={fc} className={`focus-content ${classes} ${className ? className : ''}`}>{children}</div>)
+   return (<div ref={fc} tabIndex={0} className={`focus-content ${classes} ${className ? className : ''}`}>{children}</div>)
 }
 
 export default DropItems;

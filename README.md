@@ -1,6 +1,6 @@
 # Social Media Web App
 
-This is my front-end implementation for a social media [back-end](https://github.com/pawanbhatta/my-besocial-app) for my friend .. 
+This is my [front-end](https://practical-cori-f0afcb.netlify.app) implementation for a social media [back-end](https://github.com/pawanbhatta/my-besocial-app) for my friend .. 
 
 # Getting Started with Create React App
 

@@ -9,13 +9,13 @@
    position: relative;
    margin: 0 auto;
 }
-.visible-content::after {
-   content: "•";
+.drpstatic .visible-content::after {
+   /* content: "•"; */
    font-weight: bolder;
    font-size: 1em;
    position: absolute;
    transform: translateY(-50%);
-   bottom: 50%;
+   bottom: 0%;
    left: 85%;
    animation: colorChange 2s infinite;
 }
@@ -48,21 +48,26 @@
    opacity: 0;
    transition: all 0.2s ease-out;
    position: fixed;
-   height: max-content;
+   height: 40vh;
    max-height: 100vh;
-   width: max-content;
+   width: 80vw;
    max-width: 100vw;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
 }
 
 .drpstatic:focus-within,
-.hoverable:hover {
+.drpstatic.hoverable:hover {
    z-index: 15;
 }
 .drpstatic:focus-within > .focus-content,
-.hoverable:hover > .focus-content {
+.drpstatic.hoverable:hover > .focus-content,
+.drpstatic > .focus-content:focus-within {
    visibility: initial;
    opacity: 1;
 }
@@ -70,40 +75,42 @@
 @media screen and (min-width: 600px) {
    .drpstatic > .focus-content {
       position: absolute;
+      height: max-content;
+      width: max-content;
       top: initial;
       left: initial;
       transform: initial;
    }
-   .focus-content.vcenter {
+   .drpstatic .focus-content.vcenter {
       transform: translateX(-50%);
       left: 50%;
    }
-   .focus-content.hcenter {
+   .drpstatic .focus-content.hcenter {
       transform: translateY(-50%);
       top: 50%;
    }
-   .focus-content.right {
+   .drpstatic .focus-content.right {
       left: 100%;
    }
-   .focus-content.left {
+   .drpstatic .focus-content.left {
       right: 100%;
    }
-   .focus-content.top {
+   .drpstatic .focus-content.top {
       bottom: 100%;
    }
-   .focus-content.bottom {
+   .drpstatic .focus-content.bottom {
       top: 100%;
    }
-   .focus-content.start {
+   .drpstatic .focus-content.start {
       left: 0;
    }
-   .focus-content.hstart {
+   .drpstatic.focus-content.hstart {
       top: 0;
    }
-   .focus-content.end {
+   .drpstatic .focus-content.end {
       right: 0;
    }
-   .focus-content.hend {
+   .drpstatic .focus-content.hend {
       bottom: 0;
    }
 }

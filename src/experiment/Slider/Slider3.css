@@ -15,3 +15,7 @@
 .slide--item {
    transform: translateY(-50%);
 }
+.carousel-slider,
+.carousel-root {
+   height: max-content !important;
+}

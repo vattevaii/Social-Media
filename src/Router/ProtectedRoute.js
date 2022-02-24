@@ -1,15 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useMutation } from "react-query";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import useActions from "../context/useActions";
 import apiClient from '../http-common'
 import { useCookies } from "react-cookie";
+import { Logo } from "../components/Person/PersonMini";
+import Dropdown from "../experiment/StaticDropdown/DropDown";
+import List from "../experiment/List";
 
 // import { useCookies } from "react-cookie"
-function ProtectedRoute() {
+function ProtectedRoute () {
    const { accessToken, refreshToken } = useContext(AuthContext);
-   const [cookies] = useCookies('jwt')
+   const [cookies,] = useCookies(['jwt', 'user'])
+   const { dispatch } = useContext(AuthContext);
    const location = useLocation();
    // const [, setCookie] = useCookies()
    // console.log(location);
@@ -28,9 +32,22 @@ function ProtectedRoute() {
    if (!cookies.jwt)
       return <Navigate to="/auth/logIn" state={{ from: location }} />
    return <>
-      <nav style={{ zIndex: 99 }}>
-         {!logoutLoad ?
-            <button onClick={logOut}>Logout</button> : <button disabled>Loading..</button>}
+      <nav className="profile dark expand">
+         <div className="main">
+            <span className="hover-dark">SocMed</span>
+         </div>
+         <Dropdown>
+            <Dropdown.Visible>
+               <Logo person={cookies.user} className="dark no-bg" />
+            </Dropdown.Visible>
+            <Dropdown.Focus className={"glassModel dark"}>
+               <List className="navList">
+                  <li><Link to="/post2">My Posts</Link></li>
+                  <li><Link to="/profile">Profile</Link></li>
+                  <li><Link to="/auth/logout">Logout</Link></li>
+               </List>
+            </Dropdown.Focus>
+         </Dropdown>
       </nav>
       <Outlet />
    </>

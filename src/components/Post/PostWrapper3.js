@@ -35,8 +35,6 @@ function PostWrapper() {
       tryPosts();
    }, [])
    useEffect(() => {
-      console.log(loading);
-      console.log(!weHaveData)
    }, [weHaveData]);
    if (!weHaveData) //Data Xaina
       return (

@@ -3,13 +3,13 @@ import { useCookies } from "react-cookie";
 import { useContext } from "react";
 import apiClient from '../http-common';
 import { useNavigate } from "react-router-dom";
-function useActions(context) {
+function useActions (context) {
    const { dispatch } = useContext(context);
    const setMessage = useToast(context);
    const [cookies, setCookie, removeCookie] = useCookies(['jwt', 'refresh', 'user']);
    const navigate = useNavigate();
    const foundError = (err) => {
-      if (err.response.status === 401) { //Unauthorized
+      if (err.response.status === (401 || 500)) { //Unauthorized
          removeCookie("jwt", { path: process.env.REACT_APP_PATH || "/", domain: process.env.REACT_APP_DOMAIN, secure: true, sameSite: 'None' });
          apiClient.post("/auth/refresh", { token: cookies["refresh"] })
             .then(res => {

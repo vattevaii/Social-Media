@@ -1,33 +1,14 @@
-.profile {
-   --nav-height: 4rem;
-   height: var(--nav-height);
+.findFriends {
+   min-height: 50vh;
+   min-width: 100vw;
    display: flex;
-   align-items: center;
+   flex-direction: column;
    justify-content: center;
-   position: sticky;
-   top: 0;
-   padding: 0;
+   align-items: center;
+   background: radial-gradient(circle at 0 0, #f669, #0665) no-repeat, #0005;
 }
-.profile.expand {
-   justify-content: space-between;
-}
-.profile > .main {
-   height: 100%;
-   font-size: 1.8rem;
-}
-.profile span {
-   line-height: var(--nav-height);
-}
-.profile > .sub {
-   display: none;
-   height: 100%;
-}
-.profile.expand > .sub {
+.findFriends .results {
    display: flex;
-}
-@media screen and (min-width: 600px) {
-   .profile {
-      --padding: calc(40vw - 300px);
-      padding: 0 var(--padding) 0 var(--padding);
-   }
+   max-width: 600px;
+   gap: 10px;
 }

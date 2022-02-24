@@ -1,7 +1,7 @@
 // import { useEffect, useRef, useState } from 'react';
 import DropItems from './DropItems';
 import './DrpDwn.css'
-function Dropdown({ children, className, hover }) {
+function Dropdown ({ children, className, hover }) {
    return (
       <div className={`drpstatic 
       ${hover ? "hoverable" : ""}
@@ -11,6 +11,6 @@ function Dropdown({ children, className, hover }) {
       </div>
    );
 }
-Dropdown.Visible = ({ children }) => (<div className='visible-content hover-white' tabIndex={1}>{children}</div>)
+Dropdown.Visible = ({ children, onClick }) => (<div onClick={onClick} className='visible-content hover-white' tabIndex={1}>{children}</div>)
 Dropdown.Focus = DropItems;
 export default Dropdown;

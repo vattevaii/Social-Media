@@ -40,6 +40,8 @@ img {
   cursor: pointer;
   position: relative;
 }
+.hover-white > * {
+}
 .hover-white:hover::before {
   content: "";
   position: absolute;
@@ -102,6 +104,7 @@ img {
 }
 
 /* /* NormForm CSS from Project Ugly Duck */
+/* #region  NormForm */
 fieldset,
 form,
 label,
@@ -378,3 +381,5 @@ form.normform .inline-buttons input[type="submit"],
 form.normform .inline-buttons input[type="reset"] {
   width: 50%;
 }
+
+/* #endregion */

@@ -4,7 +4,7 @@ import './Loader.css'
 function Loader({ children, white }) {
    const ld = useRef();
    if (white) ld.current.children[0].style.fill = "white"
-   return (<div className='loader-wrapper'>
+   return (<div className='loader-wrapper glassModel'>
       <div className="loader" ref={ld}>
          <LoadLogo />
       </div>

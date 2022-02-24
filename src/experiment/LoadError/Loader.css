@@ -1,6 +1,11 @@
 .loader-wrapper {
-   height: 100%;
-   width: 100%;
+   /* height: clamp(10%, 100px, 100%); */
+   min-height: 100px;
+   min-width: 100px;
+   max-width: 600px;
+   max-height: 600px;
+   margin: auto auto;
+   /* width: clamp(10%, 100px, 100%); */
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -9,6 +14,8 @@
    color: white;
 }
 .loader {
+   min-height: 90px;
+   min-width: 90px;
    height: 10%;
    width: 10%;
    /* padding: 1em; */

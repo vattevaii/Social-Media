@@ -19,15 +19,17 @@ const Toast = ({ context, title, message, type, persist, index }) => {
    useEffect(() => {
       setId(index);
    }, [index])
+   const element = message.split('pre');
+   // console.log(element);
    return (
       <div className={`toast glassModel ${type}`}>
          {persist && <span className="close" onClick={closeToast}>x</span>}
-         <div className="title">{title}</div>
-         {!!message ? <div className="message">{message}</div> : ""}
+         <div className="title">{message.length < 100 ? title : element[0].split('<')[0]}</div>
+         {!!message ? <div className="message">{message.length < 100 ? message : element[1]}</div> : ""}
       </div>)
 }
 
-function MessageToast({ context }) {
+function MessageToast ({ context }) {
    const { error } = useContext(context);
    // const [errorlength, setErrorLength] = useState(0);
    useEffect(() => {

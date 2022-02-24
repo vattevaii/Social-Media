@@ -3,9 +3,7 @@
    top: var(--topBarHeight);
    height: calc(100vh - var(--topBarHeight));
    width: 100vw;
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
+   /* display: flex; */
    flex-direction: column;
    opacity: 1;
    visibility: visible;
